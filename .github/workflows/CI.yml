@@ -29,10 +29,10 @@ jobs:
           - host: ubuntu-24.04-arm  # linux-arm64-gnu (the Lambda target)
             target: aarch64-unknown-linux-gnu
             pkg: linux-arm64-gnu
-          - host: ubuntu-latest     # linux-arm64-musl (cross-compiled)
+          - host: ubuntu-latest     # linux-arm64-musl (cross-compiled via napi-cross)
             target: aarch64-unknown-linux-musl
             pkg: linux-arm64-musl
-            docker: ghcr.io/napi-rs/napi-rs/nodejs:aarch64-musl
+            extra: --use-napi-cross
           - host: windows-latest    # win32-x64-msvc
             target: x86_64-pc-windows-msvc
             pkg: win32-x64-msvc
@@ -51,27 +51,10 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           key: ${{ matrix.settings.target }}
-      - name: Cache musl docker toolchain
-        if: matrix.settings.docker
-        uses: actions/cache@v6
-        with:
-          path: |
-            .cargo-musl/registry
-            .cargo-musl/git
-          key: musl-cargo-${{ hashFiles('Cargo.lock') }}
-      - name: Build (docker musl)
-        if: matrix.settings.docker
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/build -v ${{ github.workspace }}/.cargo-musl:/usr/local/cargo -w /build ${{ matrix.settings.docker }} \
-            sh -c "napi build --platform --release --target aarch64-unknown-linux-musl --output-dir npm/linux-arm64-musl"
-      - name: Fix cache ownership (docker runs as root)
-        if: matrix.settings.docker
-        run: sudo chown -R $(id -u):$(id -g) .cargo-musl target 2>/dev/null || true
       - name: Build (native)
-        if: ${{ !matrix.settings.docker }}
         run: |
           npm install
-          npx napi build --platform --release --target ${{ matrix.settings.target }} --output-dir npm/${{ matrix.settings.pkg }}
+          npx napi build --platform --release --target ${{ matrix.settings.target }} ${{ matrix.settings.extra }} --output-dir npm/${{ matrix.settings.pkg }}
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
