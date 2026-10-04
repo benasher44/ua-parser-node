@@ -45,15 +45,13 @@ maintained) alongside this package for that.
 
 ## How the data stays fresh
 
-The uap-core `regexes.yaml` is vendored at `vendor/regexes.yaml` and compiled
-into the binary with `include_str!`. The vendored copy is trimmed to
-`user_agent_parsers` + `os_parsers` — the 637 browser and OS rules. The
-`device_parsers` section (633 rules, 63% of the spec) is dropped
-deliberately: this package does not expose device data, and the trimmed
-spec cuts the embedded data by ~63% and roughly halves the compiled-automata
-memory footprint in the wasm build. When uap-core updates (new browsers,
-new OS versions), re-trim the upstream file and cut a release — CI rebuilds
-every platform.
+The uap-core spec is vendored at `vendor/regexes.json` and compiled into the
+binary with `include_str!`. It is trimmed to `user_agent_parsers` +
+`os_parsers` (637 rules) — the `device_parsers` section (633 rules, 63% of
+the spec) is dropped deliberately since this package does not expose device
+data. Refresh with `python3 scripts/refresh-vendor.py` (fetches upstream,
+trims, converts to compact JSON) and cut a release — CI rebuilds every
+platform.
 
 ## License
 

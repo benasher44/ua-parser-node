@@ -2,15 +2,16 @@
 //!
 //! Parses a user-agent string into browser name + major version and
 //! OS name + major version, using the browser+OS slice of the uap-core
-//! regex spec vendored at build time (see vendor/regexes.yaml).
+//! regex spec vendored at build time (see vendor/regexes.json, produced
+//! by scripts/refresh-vendor.py).
 
 use napi_derive::napi;
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 use ua_parser::{Extractor, Regexes};
 
-static EXTRACTOR: Lazy<Extractor> = Lazy::new(|| {
-    let yaml = include_str!("../vendor/regexes.yaml");
-    let regexes: Regexes = serde_yaml::from_str(yaml).expect("invalid uap-core regexes.yaml");
+static EXTRACTOR: LazyLock<Extractor> = LazyLock::new(|| {
+    let json = include_str!("../vendor/regexes.json");
+    let regexes: Regexes = serde_json::from_str(json).expect("invalid vendored uap-core regexes");
     Extractor::try_from(regexes).expect("failed to compile uap-core regexes")
 });
 
