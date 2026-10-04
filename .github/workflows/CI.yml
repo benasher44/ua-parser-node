@@ -1,5 +1,9 @@
 name: CI
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main]
@@ -40,14 +44,29 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.settings.target }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.settings.target }}
+      - name: Cache musl docker toolchain
+        if: matrix.settings.docker
+        uses: actions/cache@v6
+        with:
+          path: |
+            .cargo-musl/registry
+            .cargo-musl/git
+          key: musl-cargo-${{ hashFiles('Cargo.lock') }}
       - name: Build (docker musl)
         if: matrix.settings.docker
         run: |
-          docker run --rm -v ${{ github.workspace }}:/build -w /build ${{ matrix.settings.docker }} \
-            sh -c "yarn install && napi build --platform --release --target aarch64-unknown-linux-musl --output-dir npm/linux-arm64-musl"
+          docker run --rm -v ${{ github.workspace }}:/build -v ${{ github.workspace }}/.cargo-musl:/usr/local/cargo -w /build ${{ matrix.settings.docker }} \
+            sh -c "napi build --platform --release --target aarch64-unknown-linux-musl --output-dir npm/linux-arm64-musl"
+      - name: Fix cache ownership (docker runs as root)
+        if: matrix.settings.docker
+        run: sudo chown -R $(id -u):$(id -g) .cargo-musl target 2>/dev/null || true
       - name: Build (native)
         if: ${{ !matrix.settings.docker }}
         run: |
@@ -69,7 +88,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
       - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
       - run: npm install
       - run: npx napi build --platform --release
       - run: node --test test/smoke.test.mjs
@@ -88,6 +109,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
       - name: Download platform binary
         uses: actions/download-artifact@v8
         with:
@@ -110,6 +132,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
           registry-url: https://registry.npmjs.org/
       - name: Download all binaries
         uses: actions/download-artifact@v8
