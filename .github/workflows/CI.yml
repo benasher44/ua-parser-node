@@ -47,12 +47,12 @@ jobs:
         if: matrix.settings.docker
         run: |
           docker run --rm -v ${{ github.workspace }}:/build -w /build ${{ matrix.settings.docker }} \
-            sh -c "yarn install && napi build --platform --release --target aarch64-unknown-linux-musl --output npm/linux-arm64-musl"
+            sh -c "yarn install && napi build --platform --release --target aarch64-unknown-linux-musl --output-dir npm/linux-arm64-musl"
       - name: Build (native)
         if: ${{ !matrix.settings.docker }}
         run: |
           npm install
-          npx napi build --platform --release --target ${{ matrix.settings.target }} --output npm/${{ matrix.settings.pkg }}
+          npx napi build --platform --release --target ${{ matrix.settings.target }} --output-dir npm/${{ matrix.settings.pkg }}
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
@@ -118,8 +118,8 @@ jobs:
           merge-multiple: true
           path: .
       - run: npm install
-      - run: npx napi prepublish -t npm
+      - run: npx napi pre-publish --tagstyle npm
       - name: Publish platform packages
-        run: npx napi publish --provenance
+        run: for dir in npm/*/; do npm publish --provenance "$dir"; done
       - name: Publish main package
         run: npm publish --provenance

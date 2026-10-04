@@ -21,12 +21,12 @@
     ]
   },
   "optionalDependencies": {
-    "@ua-parser-node/darwin-arm64": "0.1.0",
-    "@ua-parser-node/darwin-x64": "0.1.0",
-    "@ua-parser-node/linux-arm64-gnu": "0.1.0",
-    "@ua-parser-node/linux-arm64-musl": "0.1.0",
-    "@ua-parser-node/linux-x64-gnu": "0.1.0",
-    "@ua-parser-node/win32-x64-msvc": "0.1.0"
+    "ua-parser-node-darwin-arm64": "0.1.0",
+    "ua-parser-node-darwin-x64": "0.1.0",
+    "ua-parser-node-linux-arm64-gnu": "0.1.0",
+    "ua-parser-node-linux-arm64-musl": "0.1.0",
+    "ua-parser-node-linux-x64-gnu": "0.1.0",
+    "ua-parser-node-win32-x64-msvc": "0.1.0"
   },
   "engines": {
     "node": ">= 20"

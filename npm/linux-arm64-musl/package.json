@@ -1,5 +1,5 @@
 {
-  "name": "@ua-parser-node/linux-arm64-musl",
+  "name": "ua-parser-node-linux-arm64-musl",
   "version": "0.1.0",
   "description": "linux-arm64 prebuilt binary for ua-parser-node",
   "os": [
@@ -8,9 +8,9 @@
   "cpu": [
     "arm64"
   ],
-  "main": "ua-parser-node.node",
+  "main": "ua-parser-node.linux-arm64-musl.node",
   "files": [
-    "ua-parser-node.node"
+    "ua-parser-node.linux-arm64-musl.node"
   ],
   "license": "MIT OR Apache-2.0",
   "repository": "https://github.com/benasher44/ua-parser-node",

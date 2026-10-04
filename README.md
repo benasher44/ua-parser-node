@@ -35,12 +35,12 @@ maintained) alongside this package for that.
 
 | package | triple |
 | --- | --- |
-| `@ua-parser-node/darwin-arm64` | `aarch64-apple-darwin` |
-| `@ua-parser-node/darwin-x64` | `x86_64-apple-darwin` |
-| `@ua-parser-node/linux-x64-gnu` | `x86_64-unknown-linux-gnu` |
-| `@ua-parser-node/linux-arm64-gnu` | `aarch64-unknown-linux-gnu` |
-| `@ua-parser-node/linux-arm64-musl` | `aarch64-unknown-linux-musl` |
-| `@ua-parser-node/win32-x64-msvc` | `x86_64-pc-windows-msvc` |
+| `ua-parser-node-darwin-arm64` | `aarch64-apple-darwin` |
+| `ua-parser-node-darwin-x64` | `x86_64-apple-darwin` |
+| `ua-parser-node-linux-x64-gnu` | `x86_64-unknown-linux-gnu` |
+| `ua-parser-node-linux-arm64-gnu` | `aarch64-unknown-linux-gnu` |
+| `ua-parser-node-linux-arm64-musl` | `aarch64-unknown-linux-musl` |
+| `ua-parser-node-win32-x64-msvc` | `x86_64-pc-windows-msvc` |
 
 
 ## How the data stays fresh
