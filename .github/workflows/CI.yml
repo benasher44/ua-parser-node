@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    if: github.event_name != 'pull_request'
     strategy:
       fail-fast: false
       matrix:
@@ -60,7 +61,21 @@ jobs:
             npm/*/ua-parser-node.node
             *.node
 
+  smoke:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm install
+      - run: npx napi build --platform --release
+      - run: node --test test/smoke.test.mjs
+
   test:
+    if: github.event_name != 'pull_request'
     needs: build
     strategy:
       matrix:

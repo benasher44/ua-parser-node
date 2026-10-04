@@ -55,5 +55,7 @@ platform.
 
 ## License
 
-Dual-licensed MIT OR Apache-2.0, matching the Rust ecosystem. The vendored
-uap-core data is also MIT-licensed.
+Dual-licensed [MIT](LICENSE-MIT) OR [Apache-2.0](LICENSE-APACHE) — the Rust
+ecosystem convention. Both are permissive (no copyleft); Apache-2.0 adds an
+explicit patent grant, which suits a package shipping compiled binaries.
+The vendored uap-core data is MIT-licensed upstream.

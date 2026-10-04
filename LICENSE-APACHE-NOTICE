@@ -1,5 +1,0 @@
-ua-parser-node is dual-licensed under MIT OR Apache-2.0.
-
-A copy of LICENSE-MIT ships in this repository. For the Apache-2.0 text see
-https://www.apache.org/licenses/LICENSE-2.0 (referenced by the vendored
-uap-core data: https://github.com/ua-parser/uap-core).
