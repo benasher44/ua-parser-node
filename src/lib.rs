@@ -11,7 +11,7 @@ use ua_parser::{Extractor, Regexes};
 static EXTRACTOR: Lazy<Extractor> = Lazy::new(|| {
     let yaml = include_str!("../vendor/regexes.yaml");
     let regexes: Regexes = serde_yaml::from_str(yaml).expect("invalid uap-core regexes.yaml");
-    Extractor::from(regexes)
+    Extractor::try_from(regexes).expect("failed to compile uap-core regexes")
 });
 
 #[napi(object)]
@@ -26,20 +26,14 @@ pub struct UaResult {
     pub os_version: Option<String>,
 }
 
-/// Major-version truncation: uap-core hands back the full dotted version;
-/// consumers group on majors, so truncate here where it is cheap.
-fn major(v: Option<&str>) -> Option<String> {
-    v.and_then(|s| s.split('.').next().map(|head| head.to_string()))
-}
-
 #[napi]
 pub fn parse_user_agent(ua: String) -> UaResult {
-    let (ua_ref, os_ref, _device) = EXTRACTOR.extract(ua.as_str());
+    let (ua, os, _device) = EXTRACTOR.extract(ua.as_str());
 
     UaResult {
-        browser: ua_ref.family.map(|s| s.into_owned()),
-        browser_version: major(ua_ref.major.as_deref()),
-        os: os_ref.os.map(|s| s.into_owned()),
-        os_version: major(os_ref.major.as_deref()),
+        browser: ua.as_ref().map(|v| v.family.to_string()),
+        browser_version: ua.as_ref().and_then(|v| v.major.map(String::from)),
+        os: os.as_ref().map(|v| v.os.to_string()),
+        os_version: os.as_ref().and_then(|v| v.major.as_deref().map(String::from)),
     }
 }

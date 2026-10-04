@@ -60,7 +60,7 @@ test('safari on iOS', () => {
 
 test('chrome on android', () => {
   const r = parseUserAgent(CHROME_ANDROID)
-  assert.equal(r.browser, 'Chrome')
+  assert.equal(r.browser, 'Chrome Mobile') // uap-core family convention for mobile Chrome
   assert.equal(r.browserVersion, '138')
   assert.equal(r.os, 'Android')
   assert.equal(r.osVersion, '15')
@@ -71,18 +71,18 @@ test('firefox on linux has no OS version', () => {
   assert.equal(r.browser, 'Firefox')
   assert.equal(r.browserVersion, '129')
   assert.equal(r.os, 'Linux')
-  assert.equal(r.osVersion, null)
+  assert.equal(r.osVersion, undefined) // unmatched fields come back as undefined
 })
 
 test('unknown strings parse to nulls without throwing', () => {
   for (const ua of [CURL, GARBAGE, GOOGLEBOT, '']) {
     const r = parseUserAgent(ua)
-    assert.equal(typeof r.browser === 'string' || r.browser === null, true)
+    assert.equal(typeof r.browser === 'string' || r.browser == null, true)
   }
 })
 
 test('null/empty input does not throw', () => {
   const r = parseUserAgent('')
-  assert.equal(r.browser, null)
-  assert.equal(r.os, null)
+  assert.equal(r.browser, undefined)
+  assert.equal(r.os, undefined)
 })

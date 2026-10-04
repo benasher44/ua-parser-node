@@ -6,6 +6,9 @@ license = "MIT OR Apache-2.0"
 description = "Node bindings for the ua-parser (uap-rust) user-agent parser"
 repository = "https://github.com/benasher44/ua-parser-node"
 
+[build-dependencies]
+napi-build = "2"
+
 [lib]
 crate-type = ["cdylib"]
 
