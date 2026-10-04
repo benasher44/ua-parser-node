@@ -9,6 +9,14 @@ use napi_derive::napi;
 use std::sync::LazyLock;
 use ua_parser::{Extractor, Regexes};
 
+#[cfg(feature = "allocator-mimalloc")]
+#[global_allocator]
+static ALLOCATOR: mimalloc::MiMalloc = mimalloc::MiMalloc;
+
+#[cfg(all(feature = "allocator-jemalloc", not(feature = "allocator-mimalloc")))]
+#[global_allocator]
+static ALLOCATOR: jemallocator::Jemalloc = jemallocator::Jemalloc;
+
 static EXTRACTOR: LazyLock<Extractor> = LazyLock::new(|| {
     let json = include_str!("../vendor/regexes.json");
     let regexes: Regexes = serde_json::from_str(json).expect("invalid vendored uap-core regexes");
