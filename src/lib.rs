@@ -1,10 +1,17 @@
-//! Node bindings for ua-parser (uap-rust).
+//! Parsing core — plain Rust, no binding macros (crate root).
 //!
-//! Parses a user-agent string into browser name + major version and
-//! OS name + major version, using the uap-core regex spec vendored at
-//! build time (see vendor/regexes.yaml).
+//! Binding shells: `napi.rs` (feature `napi`, default) for Node,
+//! `wasm.rs` (feature `wasm`, wasm32 only) for the browser via
+//! wasm-bindgen. The uap-core regex spec is vendored and compiled into
+//! the extractor once at first use.
 
-use napi_derive::napi;
+#[cfg(feature = "napi")]
+pub mod napi;
+#[cfg(all(feature = "wasm", target_arch = "wasm32"))]
+pub mod wasm;
+
+pub mod lib;
+
 use once_cell::sync::Lazy;
 use ua_parser::{Extractor, Regexes};
 
@@ -14,8 +21,8 @@ static EXTRACTOR: Lazy<Extractor> = Lazy::new(|| {
     Extractor::from(regexes)
 });
 
-#[napi(object)]
-pub struct UaResult {
+/// Parsed user-agent: browser and OS names with major versions.
+pub struct ParsedUa {
     /// e.g. "Chrome", "Mobile Safari", "Firefox"
     pub browser: Option<String>,
     /// major version only, e.g. "138"
@@ -27,16 +34,15 @@ pub struct UaResult {
 }
 
 /// Major-version truncation: uap-core hands back the full dotted version;
-/// the dashboard groups on majors, so we truncate here where it is cheap.
+/// consumers group on majors, so truncate here where it is cheap.
 fn major(v: Option<&str>) -> Option<String> {
-    v.and_then(|s| s.split('.').next().map(|major| major.to_string()))
+    v.and_then(|s| s.split('.').next().map(|head| head.to_string()))
 }
 
-#[napi]
-pub fn parse_user_agent(ua: String) -> UaResult {
-    let (ua_ref, os_ref, _device) = EXTRACTOR.extract(ua.as_str());
+pub fn parse_ua(ua: &str) -> ParsedUa {
+    let (ua_ref, os_ref, _device) = EXTRACTOR.extract(ua);
 
-    UaResult {
+    ParsedUa {
         browser: ua_ref.family.map(|s| s.into_owned()),
         browser_version: major(ua_ref.major.as_deref()),
         os: os_ref.os.map(|s| s.into_owned()),
