@@ -42,23 +42,6 @@ maintained) alongside this package for that.
 | `@ua-parser-node/linux-arm64-musl` | `aarch64-unknown-linux-musl` |
 | `@ua-parser-node/win32-x64-msvc` | `x86_64-pc-windows-msvc` |
 
-## In the browser
-
-The same crate compiles to WebAssembly and ships as
-`@ua-parser-node/wasm` — one platform-independent package, no binaries
-matrix:
-
-```js
-import init, { parseUserAgent } from '@ua-parser-node/wasm'
-
-await init()
-parseUserAgent(navigator.userAgent)
-// => { browser: 'Chrome', browserVersion: '138', os: 'Mac OS X', osVersion: '10' }
-```
-
-The wasm build is produced by `wasm-pack build --target bundler` from the
-same parsing core (`src/lib.rs`) behind a `wasm` cargo feature, so Node
-and browser stay on identical parsing rules.
 
 ## How the data stays fresh
 

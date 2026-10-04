@@ -34,7 +34,6 @@
   "scripts": {
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
-    "build:wasm": "wasm-pack build --release --target bundler --out-dir npm/wasm --out-name ua-parser-node -- --no-default-features --features wasm",
     "prepublishOnly": "napi prepublish -t npm",
     "test": "node --test test/"
   },

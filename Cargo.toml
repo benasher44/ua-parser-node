@@ -3,25 +3,19 @@ name = "ua-parser-node"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
-description = "Node and browser (wasm) bindings for the ua-parser (uap-rust) user-agent parser"
+description = "Node bindings for the ua-parser (uap-rust) user-agent parser"
 repository = "https://github.com/benasher44/ua-parser-node"
 
 [lib]
 crate-type = ["cdylib"]
 
-[features]
-default = ["napi"]
-napi = ["dep:napi", "dep:napi-derive"]
-wasm = ["dep:wasm-bindgen"]
-
 [dependencies]
+napi = { version = "3", default-features = false, features = ["napi8"] }
+napi-derive = "3"
 ua-parser = "0.2"
 serde = { version = "1", features = ["derive"] }
 serde_yaml = "0.9"
 once_cell = "1"
-napi = { version = "3", default-features = false, features = ["napi8"], optional = true }
-napi-derive = { version = "3", optional = true }
-wasm-bindgen = { version = "0.2", optional = true }
 
 [profile.release]
 lto = true
