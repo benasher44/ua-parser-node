@@ -63,9 +63,14 @@ and browser stay on identical parsing rules.
 ## How the data stays fresh
 
 The uap-core `regexes.yaml` is vendored at `vendor/regexes.yaml` and compiled
-into the binary with `include_str!`. When uap-core updates (new browsers, new
-OS versions), bump the vendored file and cut a release — CI rebuilds every
-platform.
+into the binary with `include_str!`. The vendored copy is trimmed to
+`user_agent_parsers` + `os_parsers` — the 637 browser and OS rules. The
+`device_parsers` section (633 rules, 63% of the spec) is dropped
+deliberately: this package does not expose device data, and the trimmed
+spec cuts the embedded data by ~63% and roughly halves the compiled-automata
+memory footprint in the wasm build. When uap-core updates (new browsers,
+new OS versions), re-trim the upstream file and cut a release — CI rebuilds
+every platform.
 
 ## License
 
