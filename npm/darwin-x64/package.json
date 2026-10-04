@@ -1,0 +1,20 @@
+{
+  "name": "@ua-parser-node/darwin-x64",
+  "version": "0.1.0",
+  "description": "darwin-x64 prebuilt binary for ua-parser-node",
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "ua-parser-node.node",
+  "files": [
+    "ua-parser-node.node"
+  ],
+  "license": "MIT OR Apache-2.0",
+  "repository": "https://github.com/benasher44/ua-parser-node",
+  "napi": {
+    "triple": "x86_64-apple-darwin"
+  }
+}

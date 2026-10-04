@@ -1,0 +1,54 @@
+{
+  "name": "ua-parser-node",
+  "version": "0.1.0",
+  "description": "Node bindings for ua-parser (uap-rust): browser and OS name + major version from user-agent strings",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "npm"
+  ],
+  "napi": {
+    "binaryName": "ua-parser-node",
+    "targets": [
+      "aarch64-apple-darwin",
+      "x86_64-apple-darwin",
+      "aarch64-unknown-linux-gnu",
+      "aarch64-unknown-linux-musl",
+      "x86_64-unknown-linux-gnu",
+      "x86_64-pc-windows-msvc"
+    ]
+  },
+  "optionalDependencies": {
+    "@ua-parser-node/darwin-arm64": "0.1.0",
+    "@ua-parser-node/darwin-x64": "0.1.0",
+    "@ua-parser-node/linux-arm64-gnu": "0.1.0",
+    "@ua-parser-node/linux-arm64-musl": "0.1.0",
+    "@ua-parser-node/linux-x64-gnu": "0.1.0",
+    "@ua-parser-node/win32-x64-msvc": "0.1.0"
+  },
+  "engines": {
+    "node": ">= 20"
+  },
+  "scripts": {
+    "build": "napi build --platform --release",
+    "build:debug": "napi build --platform",
+    "prepublishOnly": "napi prepublish -t npm",
+    "test": "node --test test/"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^3"
+  },
+  "keywords": [
+    "user-agent",
+    "ua-parser",
+    "uap-core",
+    "browser",
+    "os",
+    "napi",
+    "rust"
+  ],
+  "author": "Ben Asher <ben@benasher.co>",
+  "license": "(MIT OR Apache-2.0)"
+}

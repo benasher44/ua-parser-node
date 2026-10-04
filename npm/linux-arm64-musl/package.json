@@ -1,0 +1,20 @@
+{
+  "name": "@ua-parser-node/linux-arm64-musl",
+  "version": "0.1.0",
+  "description": "linux-arm64 prebuilt binary for ua-parser-node",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "main": "ua-parser-node.node",
+  "files": [
+    "ua-parser-node.node"
+  ],
+  "license": "MIT OR Apache-2.0",
+  "repository": "https://github.com/benasher44/ua-parser-node",
+  "napi": {
+    "triple": "aarch64-unknown-linux-musl"
+  }
+}
