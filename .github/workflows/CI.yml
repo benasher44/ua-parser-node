@@ -14,17 +14,23 @@ jobs:
         settings:
           - host: macos-14          # darwin-arm64
             target: aarch64-apple-darwin
+            pkg: darwin-arm64
           - host: macos-13          # darwin-x64
             target: x86_64-apple-darwin
+            pkg: darwin-x64
           - host: ubuntu-latest     # linux-x64-gnu
             target: x86_64-unknown-linux-gnu
+            pkg: linux-x64-gnu
           - host: ubuntu-24.04-arm  # linux-arm64-gnu (the Lambda target)
             target: aarch64-unknown-linux-gnu
+            pkg: linux-arm64-gnu
           - host: ubuntu-latest     # linux-arm64-musl (cross-compiled)
             target: aarch64-unknown-linux-musl
+            pkg: linux-arm64-musl
             docker: ghcr.io/napi-rs/napi-rs/nodejs:aarch64-musl
           - host: windows-latest    # win32-x64-msvc
             target: x86_64-pc-windows-msvc
+            pkg: win32-x64-msvc
     name: build ${{ matrix.settings.target }}
     runs-on: ${{ matrix.settings.host }}
     steps:
@@ -42,7 +48,7 @@ jobs:
         with:
           image: ${{ matrix.settings.docker }}
           options: -v ${{ github.workspace }}:/build -w /build
-          run: yarn install && napi build --platform --release --target aarch64-unknown-linux-musl
+          run: yarn install && napi build --platform --release --target aarch64-unknown-linux-musl --output npm/linux-arm64-musl
       - name: Build (native)
         if: ${{ !matrix.settings.docker }}
         run: |
@@ -56,7 +62,6 @@ jobs:
             npm/*/ua-parser-node.node
             *.node
 
-  test:
   test:
     needs: build
     strategy:
