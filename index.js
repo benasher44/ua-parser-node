@@ -92,8 +92,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-android-arm64')
         const bindingPackageVersion = require('ua-parser-node-android-arm64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -108,8 +108,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-android-arm-eabi')
         const bindingPackageVersion = require('ua-parser-node-android-arm-eabi/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -129,8 +129,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-win32-x64-gnu')
           const bindingPackageVersion = require('ua-parser-node-win32-x64-gnu/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -145,8 +145,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-win32-x64-msvc')
           const bindingPackageVersion = require('ua-parser-node-win32-x64-msvc/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -162,8 +162,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-win32-ia32-msvc')
         const bindingPackageVersion = require('ua-parser-node-win32-ia32-msvc/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -178,8 +178,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-win32-arm64-msvc')
         const bindingPackageVersion = require('ua-parser-node-win32-arm64-msvc/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -197,8 +197,8 @@ function requireNative() {
     try {
       const binding = require('ua-parser-node-darwin-universal')
       const bindingPackageVersion = require('ua-parser-node-darwin-universal/package.json').version
-      if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-        throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+      if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+        throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
       }
       return binding
     } catch (e) {
@@ -213,8 +213,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-darwin-x64')
         const bindingPackageVersion = require('ua-parser-node-darwin-x64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -229,8 +229,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-darwin-arm64')
         const bindingPackageVersion = require('ua-parser-node-darwin-arm64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -249,8 +249,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-freebsd-x64')
         const bindingPackageVersion = require('ua-parser-node-freebsd-x64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -265,8 +265,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-freebsd-arm64')
         const bindingPackageVersion = require('ua-parser-node-freebsd-arm64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -286,8 +286,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-x64-musl')
           const bindingPackageVersion = require('ua-parser-node-linux-x64-musl/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -302,8 +302,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-x64-gnu')
           const bindingPackageVersion = require('ua-parser-node-linux-x64-gnu/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -320,8 +320,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-arm64-musl')
           const bindingPackageVersion = require('ua-parser-node-linux-arm64-musl/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -336,8 +336,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-arm64-gnu')
           const bindingPackageVersion = require('ua-parser-node-linux-arm64-gnu/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -354,8 +354,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-arm-musleabihf')
           const bindingPackageVersion = require('ua-parser-node-linux-arm-musleabihf/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -370,8 +370,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-arm-gnueabihf')
           const bindingPackageVersion = require('ua-parser-node-linux-arm-gnueabihf/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -388,8 +388,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-loong64-musl')
           const bindingPackageVersion = require('ua-parser-node-linux-loong64-musl/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -404,8 +404,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-loong64-gnu')
           const bindingPackageVersion = require('ua-parser-node-linux-loong64-gnu/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -422,8 +422,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-riscv64-musl')
           const bindingPackageVersion = require('ua-parser-node-linux-riscv64-musl/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -438,8 +438,8 @@ function requireNative() {
         try {
           const binding = require('ua-parser-node-linux-riscv64-gnu')
           const bindingPackageVersion = require('ua-parser-node-linux-riscv64-gnu/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+            throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
           return binding
         } catch (e) {
@@ -455,8 +455,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-linux-ppc64-gnu')
         const bindingPackageVersion = require('ua-parser-node-linux-ppc64-gnu/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -471,8 +471,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-linux-s390x-gnu')
         const bindingPackageVersion = require('ua-parser-node-linux-s390x-gnu/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -491,8 +491,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-openharmony-arm64')
         const bindingPackageVersion = require('ua-parser-node-openharmony-arm64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -507,8 +507,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-openharmony-x64')
         const bindingPackageVersion = require('ua-parser-node-openharmony-x64/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -523,8 +523,8 @@ function requireNative() {
       try {
         const binding = require('ua-parser-node-openharmony-arm')
         const bindingPackageVersion = require('ua-parser-node-openharmony-arm/package.json').version
-        if (bindingPackageVersion !== '0.0.1-alpha.4' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
-          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+        if (bindingPackageVersion !== '0.0.1-alpha.5' && process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
+          throw new Error(`Native binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
         }
         return binding
       } catch (e) {
@@ -664,8 +664,8 @@ if (!nativeBinding || forceWasi) {
       if (!candidateFailed) {
         if (process.env.NAPI_RS_ENFORCE_VERSION_CHECK && process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== '0') {
           const bindingPackageVersion = require('ua-parser-node-wasm32-wasi/package.json').version
-          if (bindingPackageVersion !== '0.0.1-alpha.4') {
-            throw new Error(`WASI binding package version mismatch, expected 0.0.1-alpha.4 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
+          if (bindingPackageVersion !== '0.0.1-alpha.5') {
+            throw new Error(`WASI binding package version mismatch, expected 0.0.1-alpha.5 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`)
           }
         }
         wasiBinding = require('ua-parser-node-wasm32-wasi')
