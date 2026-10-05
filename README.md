@@ -52,7 +52,6 @@ field `undefined` and never throws.
 | package | triple |
 | --- | --- |
 | `ua-parser-node-darwin-arm64` | `aarch64-apple-darwin` |
-| `ua-parser-node-darwin-x64` | `x86_64-apple-darwin` |
 | `ua-parser-node-linux-x64-gnu` | `x86_64-unknown-linux-gnu` |
 | `ua-parser-node-linux-arm64-gnu` | `aarch64-unknown-linux-gnu` |
 | `ua-parser-node-linux-arm64-musl` | `aarch64-unknown-linux-musl` |

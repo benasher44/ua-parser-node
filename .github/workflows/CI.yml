@@ -20,11 +20,6 @@ jobs:
           - host: macos-15-arm64    # darwin-arm64 (native)
             target: aarch64-apple-darwin
             pkg: darwin-arm64
-          # Intel mac runners (macos-13) are retired/starved; the x64 slice
-          # cross-builds on the arm64 host (Xcode targets both arches).
-          - host: macos-15-arm64    # darwin-x64 (cross-compiled on arm host)
-            target: x86_64-apple-darwin
-            pkg: darwin-x64
           - host: ubuntu-latest     # linux-x64-gnu
             target: x86_64-unknown-linux-gnu
             pkg: linux-x64-gnu
