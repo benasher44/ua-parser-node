@@ -29,10 +29,10 @@ jobs:
           - host: ubuntu-24.04-arm  # linux-arm64-gnu (the Lambda target)
             target: aarch64-unknown-linux-gnu
             pkg: linux-arm64-gnu
-          - host: ubuntu-latest     # linux-arm64-musl (cross-compiled via napi-cross)
+          - host: ubuntu-latest     # linux-arm64-musl (cross-compiled via zig)
             target: aarch64-unknown-linux-musl
             pkg: linux-arm64-musl
-            extra: --use-napi-cross
+            extra: --cross-compile
           - host: windows-latest    # win32-x64-msvc
             target: x86_64-pc-windows-msvc
             pkg: win32-x64-msvc
