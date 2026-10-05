@@ -1249,51 +1249,46 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ua-parser-node-darwin-arm64@npm:0.0.1-alpha.4":
-  version: 0.0.1-alpha.4
-  resolution: "ua-parser-node-darwin-arm64@npm:0.0.1-alpha.4"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
+"ua-parser-node-darwin-arm64@npm:0.0.1-alpha.5, ua-parser-node-darwin-arm64@workspace:npm/darwin-arm64":
+  version: 0.0.0-use.local
+  resolution: "ua-parser-node-darwin-arm64@workspace:npm/darwin-arm64"
+  languageName: unknown
+  linkType: soft
 
-"ua-parser-node-linux-arm64-gnu@npm:0.0.1-alpha.4":
-  version: 0.0.1-alpha.4
-  resolution: "ua-parser-node-linux-arm64-gnu@npm:0.0.1-alpha.4"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
+"ua-parser-node-linux-arm64-gnu@npm:0.0.1-alpha.5, ua-parser-node-linux-arm64-gnu@workspace:npm/linux-arm64-gnu":
+  version: 0.0.0-use.local
+  resolution: "ua-parser-node-linux-arm64-gnu@workspace:npm/linux-arm64-gnu"
+  languageName: unknown
+  linkType: soft
 
-"ua-parser-node-linux-arm64-musl@npm:0.0.1-alpha.4":
-  version: 0.0.1-alpha.4
-  resolution: "ua-parser-node-linux-arm64-musl@npm:0.0.1-alpha.4"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
+"ua-parser-node-linux-arm64-musl@npm:0.0.1-alpha.5, ua-parser-node-linux-arm64-musl@workspace:npm/linux-arm64-musl":
+  version: 0.0.0-use.local
+  resolution: "ua-parser-node-linux-arm64-musl@workspace:npm/linux-arm64-musl"
+  languageName: unknown
+  linkType: soft
 
-"ua-parser-node-linux-x64-gnu@npm:0.0.1-alpha.4":
-  version: 0.0.1-alpha.4
-  resolution: "ua-parser-node-linux-x64-gnu@npm:0.0.1-alpha.4"
-  conditions: os=linux & cpu=x64
-  languageName: node
-  linkType: hard
+"ua-parser-node-linux-x64-gnu@npm:0.0.1-alpha.5, ua-parser-node-linux-x64-gnu@workspace:npm/linux-x64-gnu":
+  version: 0.0.0-use.local
+  resolution: "ua-parser-node-linux-x64-gnu@workspace:npm/linux-x64-gnu"
+  languageName: unknown
+  linkType: soft
 
-"ua-parser-node-win32-x64-msvc@npm:0.0.1-alpha.4":
-  version: 0.0.1-alpha.4
-  resolution: "ua-parser-node-win32-x64-msvc@npm:0.0.1-alpha.4"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
+"ua-parser-node-win32-x64-msvc@npm:0.0.1-alpha.5, ua-parser-node-win32-x64-msvc@workspace:npm/win32-x64-msvc":
+  version: 0.0.0-use.local
+  resolution: "ua-parser-node-win32-x64-msvc@workspace:npm/win32-x64-msvc"
+  languageName: unknown
+  linkType: soft
 
 "ua-parser-node@workspace:.":
   version: 0.0.0-use.local
   resolution: "ua-parser-node@workspace:."
   dependencies:
     "@napi-rs/cli": "npm:^3"
-    ua-parser-node-darwin-arm64: "npm:0.0.1-alpha.4"
-    ua-parser-node-linux-arm64-gnu: "npm:0.0.1-alpha.4"
-    ua-parser-node-linux-arm64-musl: "npm:0.0.1-alpha.4"
-    ua-parser-node-linux-x64-gnu: "npm:0.0.1-alpha.4"
-    ua-parser-node-win32-x64-msvc: "npm:0.0.1-alpha.4"
+    ua-parser-node-darwin-arm64: "npm:0.0.1-alpha.5"
+    ua-parser-node-linux-arm64-gnu: "npm:0.0.1-alpha.5"
+    ua-parser-node-linux-arm64-musl: "npm:0.0.1-alpha.5"
+    ua-parser-node-linux-x64-gnu: "npm:0.0.1-alpha.5"
+    ua-parser-node-win32-x64-msvc: "npm:0.0.1-alpha.5"
   dependenciesMeta:
     ua-parser-node-darwin-arm64:
       optional: true

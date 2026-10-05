@@ -2,6 +2,9 @@
   "name": "ua-parser-node",
   "version": "0.0.1-alpha.5",
   "type": "module",
+  "workspaces": [
+    "npm/*"
+  ],
   "description": "Node bindings for ua-parser (uap-rust): browser, OS and device with full versions, plus major-only convenience fields",
   "main": "index.js",
   "types": "index.d.ts",
