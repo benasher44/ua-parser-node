@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Refresh vendor/regexes.json from upstream uap-core.
 
-Fetches regexes.yaml, drops the device_parsers section (unused by this
-package's API), and writes a compact JSON conversion that src/lib.rs
-includes at build time. Requires pyyaml: python3 -m pip install pyyaml
+Fetches the full uap-core regexes.yaml (browser, OS and device parity
+with uap-rust's Extractor) and writes a compact JSON conversion that
+src/lib.rs includes at build time. Requires pyyaml: python3 -m pip install pyyaml
 """
 import json, pathlib, re, sys, urllib.request
 
@@ -15,11 +15,11 @@ import yaml
 src = urllib.request.urlopen(UPSTREAM, timeout=30).read().decode()
 data = yaml.safe_load(src)
 
-# trim: this package exposes browser + OS only
+# full spec: all three sections (browser, OS, device)
 trimmed = {
     'user_agent_parsers': data.get('user_agent_parsers', []),
     'os_parsers': data.get('os_parsers', []),
-    'device_parsers': [],  # dropped on purpose
+    'device_parsers': data.get('device_parsers', []),
 }
 OUT.write_text(json.dumps(trimmed, separators=(',', ':')) + '\n')
 

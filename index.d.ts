@@ -16,8 +16,18 @@ export interface UaResult {
   browser?: string
   /** major version only, e.g. "138" */
   browserVersion?: string
+  /** full dotted version, e.g. "138.0.0.0" */
+  browserVersionFull?: string
   /** e.g. "Mac OS X", "Windows", "iOS", "Android" */
   os?: string
-  /** major version only, e.g. "10", "18" */
+  /** major version only, e.g. "10" */
   osVersion?: string
+  /** full dotted version, e.g. "10.15.7" */
+  osVersionFull?: string
+  /** device family from uap-core, e.g. "iPhone", "Pixel 9" */
+  device?: string
+  /** e.g. "Apple", "Samsung" */
+  brand?: string
+  /** e.g. "iPhone", "Pixel 9" */
+  model?: string
 }

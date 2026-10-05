@@ -65,8 +65,8 @@ bench(`diverse (${diverse.length} distinct)`, diverse, iters)
 
 // soak: growth check across many parses of the diverse set
 const soak = iters * 5
-const rssBefore = rss()
+const rssSoakStart = rss()
 for (let i = 0; i < soak; i++) parseUserAgent(diverse[i % diverse.length])
-const rssAfter = rss()
-console.log(`soak ${soak.toLocaleString()} diverse parses: rss ${rssBefore.toFixed(1)} -> ${rssAfter.toFixed(1)} MB (delta ${(rssAfter - rssBefore).toFixed(1)} MB)`)
+const rssSoakEnd = rss()
+console.log(`soak ${soak.toLocaleString()} diverse parses: rss ${rssSoakStart.toFixed(1)} -> ${rssSoakEnd.toFixed(1)} MB (delta ${(rssSoakEnd - rssSoakStart).toFixed(1)} MB)`)
 console.log('node', process.version)

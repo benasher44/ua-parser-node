@@ -29,6 +29,27 @@ test('chrome on macOS', () => {
   assert.equal(r.osVersion, '10')
 })
 
+test('full versions and device info (general-purpose API)', () => {
+  const r = parseUserAgent(CHROME_MAC)
+  assert.equal(r.browserVersionFull, '138.0.0.0')
+  assert.equal(r.osVersionFull, '10.15.7')
+  assert.equal(r.device, 'Mac')
+  assert.equal(r.brand, 'Apple')
+  assert.equal(r.model, 'Mac')
+
+  const iphone = parseUserAgent(SAFARI_IOS)
+  assert.equal(iphone.osVersionFull, '18.5')
+  assert.equal(iphone.device, 'iPhone')
+  assert.equal(iphone.brand, 'Apple')
+  assert.equal(iphone.model, 'iPhone')
+
+  // unmatched strings leave every field undefined, no throw
+  const g = parseUserAgent('not-a-user-agent')
+  assert.equal(g.browserVersionFull ?? null, null)
+  assert.equal(g.device ?? null, null)
+  assert.equal(g.brand ?? null, null)
+})
+
 test('safari on macOS', () => {
   const r = parseUserAgent(SAFARI_MAC)
   assert.equal(r.browser, 'Safari')

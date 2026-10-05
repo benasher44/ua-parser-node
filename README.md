@@ -4,10 +4,10 @@ Node bindings for [ua-parser (uap-rust)](https://github.com/ua-parser/uap-rust),
 the official Rust implementation of the
 [uap-core](https://github.com/ua-parser/uap-core) user-agent regex spec.
 
-Extracts **browser name + major version** and **OS name + major version** from
-user-agent strings. No node-gyp, no postinstall scripts — prebuilt binaries
-ship as platform-specific `optionalDependencies`, exactly like esbuild and
-rolldown.
+General-purpose extraction of **browser, OS and device** — names, brands,
+models, and versions — from user-agent strings. No node-gyp, no postinstall
+scripts — prebuilt binaries ship as platform-specific `optionalDependencies`,
+exactly like esbuild and rolldown.
 
 ```js
 import { parseUserAgent } from 'ua-parser-node'
@@ -15,7 +15,17 @@ import { parseUserAgent } from 'ua-parser-node'
 parseUserAgent(
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
 )
-// => { browser: 'Chrome', browserVersion: '138', os: 'Mac OS X', osVersion: '10' }
+// => {
+//   browser: 'Chrome',
+//   browserVersion: '138',          // major, for analytics grouping
+//   browserVersionFull: '138.0.0.0',
+//   os: 'Mac OS X',
+//   osVersion: '10',                // major
+//   osVersionFull: '10.15.7',
+//   device: 'Mac',
+//   brand: 'Apple',
+//   model: 'Mac',
+// }
 ```
 
 ## Why
@@ -27,9 +37,15 @@ The actively maintained part of this problem — the uap-core regex database —
 is a data spec any Rust implementation can consume, so this package binds
 uap-rust to it and leaves the JavaScript world behind.
 
-Bot and AI-crawler classification is intentionally out of scope: use
-[`isbot`](https://www.npmjs.com/package/isbot) (Unlicense, actively
-maintained) alongside this package for that.
+## API
+
+`parseUserAgent(ua: string): UaResult`
+
+All uap-core domains are extracted in one call — browser family + version,
+OS + version, and device family/brand/model. Version fields come in two
+forms: `*Version` (major only, for analytics grouping) and `*VersionFull`
+(the complete dotted string). Unmatched input returns a result with every
+field `undefined` and never throws.
 
 ## Supported platforms
 
@@ -42,15 +58,12 @@ maintained) alongside this package for that.
 | `ua-parser-node-linux-arm64-musl` | `aarch64-unknown-linux-musl` |
 | `ua-parser-node-win32-x64-msvc` | `x86_64-pc-windows-msvc` |
 
-
 ## How the data stays fresh
 
-The uap-core spec is vendored at `vendor/regexes.json` and compiled into the
-binary with `include_str!`. It is trimmed to `user_agent_parsers` +
-`os_parsers` (637 rules) — the `device_parsers` section (633 rules, 63% of
-the spec) is dropped deliberately since this package does not expose device
-data. Refresh with `python3 scripts/refresh-vendor.py` (fetches upstream,
-trims, converts to compact JSON) and cut a release — CI rebuilds every
+The full uap-core spec (browser, OS and device parsers — 1,270 rules) is
+vendored at `vendor/regexes.json` and compiled into the binary with
+`include_str!`. Refresh with `python3 scripts/refresh-vendor.py` (fetches
+upstream, converts to compact JSON) and cut a release — CI rebuilds every
 platform.
 
 ## License

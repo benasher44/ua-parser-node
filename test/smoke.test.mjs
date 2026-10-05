@@ -18,6 +18,11 @@ test('returns the expected shape for a mainstream UA', () => {
   assert.equal(typeof r.browserVersion, 'string')
   assert.equal(typeof r.os, 'string')
   assert.equal(typeof r.osVersion, 'string')
+  assert.equal(typeof r.browserVersionFull, 'string')
+  assert.equal(typeof r.osVersionFull, 'string')
+  assert.equal(typeof r.device, 'string')
+  assert.equal(typeof r.brand, 'string')
+  assert.equal(typeof r.model, 'string')
 })
 
 test('unmatched input yields no throw and empty result', () => {
