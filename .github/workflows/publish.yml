@@ -43,7 +43,7 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: yarn
+      - run: corepack enable   # packageManager: yarn@4.18.1 — runner's global yarn is 1.x
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.settings.target }}
@@ -85,7 +85,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: yarn
+      - run: corepack enable
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - run: yarn install
@@ -108,7 +108,6 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: yarn
           registry-url: https://registry.npmjs.org/
       - name: Download all binaries
         uses: actions/download-artifact@v8
@@ -123,7 +122,6 @@ jobs:
           for d in darwin-arm64 linux-x64-gnu linux-arm64-gnu linux-arm64-musl win32-x64-msvc; do
             cp "$d/ua-parser-node.$d.node" "npm/$d/ua-parser-node.$d.node"
           done
-      - run: yarn install
       - name: Publish platform packages (binaries from the downloaded artifacts)
         run: |
           set +e
