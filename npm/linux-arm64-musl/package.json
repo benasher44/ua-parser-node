@@ -19,5 +19,8 @@
   },
   "napi": {
     "triple": "aarch64-unknown-linux-musl"
-  }
+  },
+  "libc": [
+    "musl"
+  ]
 }
