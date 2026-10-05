@@ -1,6 +1,7 @@
 {
   "name": "ua-parser-node",
   "version": "0.0.1-alpha.4",
+  "type": "commonjs",
   "description": "Node bindings for ua-parser (uap-rust): browser, OS and device with full versions, plus major-only convenience fields",
   "main": "index.js",
   "types": "index.d.ts",
