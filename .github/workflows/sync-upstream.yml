@@ -1,0 +1,59 @@
+name: Sync upstream
+
+# When ua-parser (uap-rust) releases a new version, bump ua-parser-node to
+# mirror it and push a v* tag — the existing publish workflow builds, tests
+# and publishes automatically. Alpha mode publishes a prerelease round;
+# final mode publishes the stable (which also moves the npm `latest` tag).
+on:
+  schedule:
+    - cron: '0 6 * * *'   # daily 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'alpha (prerelease round) or final (stable)'
+        type: choice
+        default: alpha
+        options:
+          - alpha
+          - final
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: corepack enable
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Sync versions with upstream
+        id: sync
+        run: |
+          OUT=$(node scripts/sync-upstream.mjs --mode ${{ inputs.mode || 'alpha' }})
+          echo "$OUT"
+          if [[ "$OUT" == NEW_VERSION=* ]]; then
+            echo "version=${OUT#NEW_VERSION=}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install + build + test the bumped tree
+        if: steps.sync.outputs.version != ''
+        run: |
+          yarn install
+          yarn napi build --platform --release --format esm
+          yarn test
+      - name: Commit, tag and push (triggers the publish workflow)
+        if: steps.sync.outputs.version != ''
+        run: |
+          git config user.name "Ben Asher"
+          git config user.email "ben@benasher.co"
+          git add -A
+          git commit -m "Sync to ua-parser ${{ steps.sync.outputs.version }} (upstream release)"
+          git tag v${{ steps.sync.outputs.version }}
+          git push
+          git push --tags

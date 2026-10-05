@@ -122,15 +122,22 @@ jobs:
           for d in darwin-arm64 linux-x64-gnu linux-arm64-gnu linux-arm64-musl win32-x64-msvc; do
             cp "$d/ua-parser-node.$d.node" "npm/$d/ua-parser-node.$d.node"
           done
+      - name: Detect prerelease (alpha tag only for prerelease versions)
+        run: |
+          V=$(node -p "require('./package.json').version")
+          if [[ "$V" == *-* ]]; then echo "IS_PRERELEASE=1" >> "$GITHUB_ENV"; else echo "IS_PRERELEASE=0" >> "$GITHUB_ENV"; fi
       - name: Publish platform packages (binaries from the downloaded artifacts)
         run: |
           set +e
           fail=0
+          TAG=""; [ "$IS_PRERELEASE" = "1" ] && TAG="--tag alpha"
           for dir in npm/*/; do
             test -n "$(find "$dir" -name '*.node' | head -1)" || { echo "no .node in $dir"; fail=1; continue; }
-            npm publish --provenance --tag alpha "$dir"
+            npm publish --provenance $TAG "$dir"
             if [ $? -eq 0 ]; then echo "PUBLISHED: $dir"; else echo "FAILED: $dir"; fail=1; fi
           done
           exit $fail
       - name: Publish main package
-        run: npm publish --provenance --tag alpha
+        run: |
+          TAG=""; [ "$IS_PRERELEASE" = "1" ] && TAG="--tag alpha"
+          npm publish --provenance $TAG
