@@ -55,13 +55,22 @@ jobs:
         run: |
           npm install
           npx napi build --platform --release --target ${{ matrix.settings.target }} ${{ matrix.settings.extra }} --output-dir npm/${{ matrix.settings.pkg }}
+      # tests run against the just-built binary: copy it to the repo root so the
+      # committed loader's local fallback finds it (per-platform, in place).
+      # The musl slice is aarch64 cross-compiled on an x64 host — untestable here.
+      - name: Stage binary for tests
+        if: ${{ !matrix.settings.extra }}
+        run: |
+          node -e "const fs=require('fs'),d='npm/${{ matrix.settings.pkg }}';const f=fs.readdirSync(d).find(x=>x.endsWith('.node'));fs.copyFileSync(d+'/'+f,f)"
+      - name: Test
+        if: ${{ !matrix.settings.extra }}
+        run: npm test
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
           name: binaries-${{ matrix.settings.target }}
-          path: |
-            npm/*/ua-parser-node.node
-            *.node
+          path: npm/
+          if-no-files-found: error
 
   smoke:
     if: github.event_name == 'pull_request'
@@ -78,33 +87,10 @@ jobs:
       - run: npx napi build --platform --release
       - run: node --test test/smoke.test.mjs
 
-  test:
-    if: github.event_name != 'pull_request'
-    needs: build
-    strategy:
-      matrix:
-        include:
-          - os: macos-14    # darwin-arm64
-          - os: ubuntu-24.04-arm  # linux-arm64-gnu
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: npm
-      - name: Download platform binary
-        uses: actions/download-artifact@v8
-        with:
-          pattern: binaries-*
-          merge-multiple: true
-          path: .
-      - run: npm install
-      - run: npm test
 
   publish:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
