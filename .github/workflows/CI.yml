@@ -105,6 +105,13 @@ jobs:
           pattern: binaries-*
           merge-multiple: true
           path: .
+      # artifacts contain the npm/ CONTENTS (upload-artifact strips the top
+      # level): merge lands at ./<platform>/ — stage them into the npm dirs
+      - name: Stage binaries into npm dirs
+        run: |
+          for d in darwin-arm64 linux-x64-gnu linux-arm64-gnu linux-arm64-musl win32-x64-msvc; do
+            cp "$d/ua-parser-node.$d.node" "npm/$d/ua-parser-node.$d.node"
+          done
       - run: npm install
       - name: Publish platform packages (binaries from the downloaded artifacts)
         run: |
