@@ -1,7 +1,7 @@
 {
   "name": "ua-parser-node",
   "version": "0.0.1-alpha.4",
-  "description": "Node bindings for ua-parser (uap-rust): browser and OS name + major version from user-agent strings",
+  "description": "Node bindings for ua-parser (uap-rust): browser, OS and device with full versions, plus major-only convenience fields",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [

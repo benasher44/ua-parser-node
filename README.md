@@ -57,6 +57,24 @@ field `undefined` and never throws.
 | `ua-parser-node-linux-arm64-musl` | `aarch64-unknown-linux-musl` |
 | `ua-parser-node-win32-x64-msvc` | `x86_64-pc-windows-msvc` |
 
+## Bundlers
+
+Bundlers (esbuild, rolldown, etc.) refuse to inline a native `.node` file, so
+mark the native packages external when bundling for Node:
+
+```js
+// esbuild
+build({
+  entryPoints: ['src/index.ts'],
+  bundle: true,
+  platform: 'node',
+  external: ['ua-parser-node', 'ua-parser-node-linux-arm64-gnu' /* + your platforms */],
+})
+```
+
+The package itself loads fine unbundled under both `import` and `require`
+(fully ESM-interop-clean).
+
 ## License
 
 Dual-licensed [MIT](LICENSE-MIT) OR [Apache-2.0](LICENSE-APACHE), matching
