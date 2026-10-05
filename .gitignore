@@ -2,3 +2,4 @@ node_modules/
 target/
 *.node
 index.js.bak
+.yarn/

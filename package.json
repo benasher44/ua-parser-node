@@ -29,6 +29,7 @@
   "engines": {
     "node": ">= 20"
   },
+  "packageManager": "yarn@4.18.1",
   "scripts": {
     "build": "napi build --platform --release --format esm",
     "build:debug": "napi build --platform --format esm",
