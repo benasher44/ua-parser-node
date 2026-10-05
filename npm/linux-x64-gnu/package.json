@@ -1,6 +1,6 @@
 {
   "name": "ua-parser-node-linux-x64-gnu",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "linux-x64 prebuilt binary for ua-parser-node",
   "os": [
     "linux"
@@ -13,7 +13,10 @@
     "ua-parser-node.linux-x64-gnu.node"
   ],
   "license": "MIT OR Apache-2.0",
-  "repository": "https://github.com/benasher44/ua-parser-node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benasher44/ua-parser-node.git"
+  },
   "napi": {
     "triple": "x86_64-unknown-linux-gnu"
   }

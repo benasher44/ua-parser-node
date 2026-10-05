@@ -1,6 +1,6 @@
 {
   "name": "ua-parser-node-darwin-arm64",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "darwin-arm64 prebuilt binary for ua-parser-node",
   "os": [
     "darwin"
@@ -13,7 +13,10 @@
     "ua-parser-node.darwin-arm64.node"
   ],
   "license": "MIT OR Apache-2.0",
-  "repository": "https://github.com/benasher44/ua-parser-node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benasher44/ua-parser-node.git"
+  },
   "napi": {
     "triple": "aarch64-apple-darwin"
   }
