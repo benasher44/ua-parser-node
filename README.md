@@ -27,9 +27,10 @@ Fully typed: `index.d.ts` ships with the package, generated from the Rust API
 on every build — `parseUserAgent` and `UaResult` are typed out of the box, no
 `@types/` package needed.
 
-Compatible with Node `>= 20` under both `require` and static `import` (the
-single CJS loader resolves through ESM interop — no `await import` needed);
-tested on 20/22/24.
+An ESM package (`"type": "module"`): static `import` works everywhere, and
+`require()` works on Node versions that support `require(esm)` (20.19+ /
+22.12+). The native binding loads synchronously via `createRequire` — no
+`await import` needed. Tested on 20/22/24.
 
 ## Why
 

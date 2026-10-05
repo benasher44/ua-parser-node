@@ -1,7 +1,7 @@
 {
   "name": "ua-parser-node",
   "version": "0.0.1-alpha.4",
-  "type": "commonjs",
+  "type": "module",
   "description": "Node bindings for ua-parser (uap-rust): browser, OS and device with full versions, plus major-only convenience fields",
   "main": "index.js",
   "types": "index.d.ts",
@@ -30,8 +30,8 @@
     "node": ">= 20"
   },
   "scripts": {
-    "build": "napi build --platform --release",
-    "build:debug": "napi build --platform",
+    "build": "napi build --platform --release --format esm",
+    "build:debug": "napi build --platform --format esm",
     "test": "node --test"
   },
   "devDependencies": {

@@ -56,7 +56,7 @@ jobs:
       - name: Build (native)
         run: |
           npm install
-          npx napi build --platform --release --target ${{ matrix.settings.target }} ${{ matrix.settings.extra }} --output-dir npm/${{ matrix.settings.pkg }}
+          npx napi build --platform --release --format esm --target ${{ matrix.settings.target }} ${{ matrix.settings.extra }} --output-dir npm/${{ matrix.settings.pkg }}
       # tests run against the just-built binary: copy it to the repo root so the
       # committed loader's local fallback finds it (per-platform, in place).
       # The musl slice is aarch64 cross-compiled on an x64 host — untestable here.
@@ -89,7 +89,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - run: npm install
-      - run: npx napi build --platform --release
+      - run: npx napi build --platform --release --format esm
       - run: node --test test/smoke.test.mjs
 
 
