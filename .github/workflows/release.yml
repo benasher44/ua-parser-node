@@ -118,9 +118,13 @@ jobs:
       - run: npm install
       - name: Publish platform packages (binaries from the downloaded artifacts)
         run: |
+          set +e
+          fail=0
           for dir in npm/*/; do
-            test -n "$(find "$dir" -name '*.node' | head -1)" || { echo "no .node in $dir"; exit 1; }
+            test -n "$(find "$dir" -name '*.node' | head -1)" || { echo "no .node in $dir"; fail=1; continue; }
             npm publish --provenance --tag alpha "$dir"
+            if [ $? -eq 0 ]; then echo "PUBLISHED: $dir"; else echo "FAILED: $dir"; fail=1; fi
           done
+          exit $fail
       - name: Publish main package
         run: npm publish --provenance --tag alpha

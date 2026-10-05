@@ -1,6 +1,6 @@
 {
   "name": "ua-parser-node",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "Node bindings for ua-parser (uap-rust): browser and OS name + major version from user-agent strings",
   "main": "index.js",
   "types": "index.d.ts",
@@ -19,11 +19,11 @@
     ]
   },
   "optionalDependencies": {
-    "ua-parser-node-darwin-arm64": "0.0.1-alpha.2",
-    "ua-parser-node-linux-arm64-gnu": "0.0.1-alpha.2",
-    "ua-parser-node-linux-arm64-musl": "0.0.1-alpha.2",
-    "ua-parser-node-linux-x64-gnu": "0.0.1-alpha.2",
-    "ua-parser-node-win32-x64-msvc": "0.0.1-alpha.2"
+    "ua-parser-node-darwin-arm64": "0.0.1-alpha.3",
+    "ua-parser-node-linux-arm64-gnu": "0.0.1-alpha.3",
+    "ua-parser-node-linux-arm64-musl": "0.0.1-alpha.3",
+    "ua-parser-node-linux-x64-gnu": "0.0.1-alpha.3",
+    "ua-parser-node-win32-x64-msvc": "0.0.1-alpha.3"
   },
   "engines": {
     "node": ">= 20"
