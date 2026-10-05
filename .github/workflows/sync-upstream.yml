@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # GITHUB_TOKEN can't fire push events, so we dispatch the publish explicitly
 
 jobs:
   sync:
@@ -57,3 +58,6 @@ jobs:
           git tag "v${{ steps.sync.outputs.version }}"
           git push
           git push --tags
+      - name: Trigger the publish workflow
+        if: steps.sync.outputs.version != ''
+        run: gh workflow run publish.yml -f ref=v${{ steps.sync.outputs.version }}
