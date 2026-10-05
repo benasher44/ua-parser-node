@@ -51,6 +51,9 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           key: ${{ matrix.settings.target }}
+      - name: Setup zig (musl cross toolchain)
+        if: contains(matrix.settings.target, 'musl')
+        uses: mlugg/setup-zig@v2
       - name: Build (native)
         run: |
           npm install
