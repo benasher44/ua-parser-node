@@ -26,8 +26,7 @@ parseUserAgent(
 Fully typed: `index.d.ts` ships with the package, generated from the Rust API.
 
 An ESM package (`"type": "module"`): static `import` works everywhere, and
-`require()` works on Node versions that support `require(esm)` (20.19+ /
-22.12+). Tested on 20/22/24.
+`require()` works on Node versions that support `require(esm)`.
 
 ## Why
 
