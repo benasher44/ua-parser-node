@@ -23,14 +23,11 @@ parseUserAgent(
 // }
 ```
 
-Fully typed: `index.d.ts` ships with the package, generated from the Rust API
-on every build — `parseUserAgent` and `UaResult` are typed out of the box, no
-`@types/` package needed.
+Fully typed: `index.d.ts` ships with the package, generated from the Rust API.
 
 An ESM package (`"type": "module"`): static `import` works everywhere, and
 `require()` works on Node versions that support `require(esm)` (20.19+ /
-22.12+). The native binding loads synchronously via `createRequire` — no
-`await import` needed. Tested on 20/22/24.
+22.12+). Tested on 20/22/24.
 
 ## Why
 
