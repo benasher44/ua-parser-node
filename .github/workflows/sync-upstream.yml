@@ -44,7 +44,7 @@ jobs:
       - name: Install + build + test the bumped tree
         if: steps.sync.outputs.version != ''
         run: |
-          yarn install
+          yarn install --mode=update-lockfile
           yarn napi build --platform --release --format esm
           yarn test
       - name: Commit, tag and push (triggers the publish workflow)
