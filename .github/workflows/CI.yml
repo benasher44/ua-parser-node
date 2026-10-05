@@ -106,9 +106,12 @@ jobs:
           merge-multiple: true
           path: .
       - run: npm install
-      - run: npx napi pre-publish --tagstyle npm
-      - name: Publish platform packages
-        run: for dir in npm/*/; do npm publish --tag alpha "$dir"; done
+      - name: Publish platform packages (binaries from the downloaded artifacts)
+        run: |
+          for dir in npm/*/; do
+            test -n "$(find "$dir" -name '*.node' | head -1)" || { echo "no .node in $dir"; exit 1; }
+            npm publish --tag alpha "$dir"
+          done
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish main package
