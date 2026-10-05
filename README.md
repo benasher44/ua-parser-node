@@ -4,11 +4,6 @@ Node bindings for [ua-parser (uap-rust)](https://github.com/ua-parser/uap-rust),
 the official Rust implementation of the
 [uap-core](https://github.com/ua-parser/uap-core) user-agent regex spec.
 
-General-purpose extraction of **browser, OS and device** — names, brands,
-models, and versions — from user-agent strings. No node-gyp, no postinstall
-scripts — prebuilt binaries ship as platform-specific `optionalDependencies`,
-exactly like esbuild and rolldown.
-
 ```js
 import { parseUserAgent } from 'ua-parser-node'
 
@@ -28,14 +23,19 @@ parseUserAgent(
 // }
 ```
 
+Fully typed: `index.d.ts` ships with the package, generated from the Rust API
+on every build — `parseUserAgent` and `UaResult` are typed out of the box, no
+`@types/` package needed.
+
 ## Why
 
-Every maintained JavaScript user-agent parser in the ecosystem is either
-frozen (`ua-parser-js` v1), AGPL-licensed (`ua-parser-js` v2), enormous
-(`node-device-detector`, 2.4MB), or dead (`detect-browser`, last commit 2021).
-The actively maintained part of this problem — the uap-core regex database —
-is a data spec any Rust implementation can consume, so this package binds
-uap-rust to it and leaves the JavaScript world behind.
+The maintained JavaScript user-agent parsers are a mixed bag: `ua-parser-js`
+v1 is frozen, v2 is AGPL-licensed, `node-device-detector` is 2.4MB, and
+`detect-browser` is unmaintained. The actively maintained part of this
+problem is the uap-core regex database, a data spec any Rust implementation
+can consume. This package binds uap-rust to it: uap-rust is actively
+maintained, so the parsing rules stay current without this package
+maintaining its own.
 
 ## API
 
@@ -57,17 +57,7 @@ field `undefined` and never throws.
 | `ua-parser-node-linux-arm64-musl` | `aarch64-unknown-linux-musl` |
 | `ua-parser-node-win32-x64-msvc` | `x86_64-pc-windows-msvc` |
 
-## How the data stays fresh
-
-The full uap-core spec (browser, OS and device parsers — 1,270 rules) is
-vendored at `vendor/regexes.json` and compiled into the binary with
-`include_str!`. Refresh with `python3 scripts/refresh-vendor.py` (fetches
-upstream, converts to compact JSON) and cut a release — CI rebuilds every
-platform.
-
 ## License
 
-Dual-licensed [MIT](LICENSE-MIT) OR [Apache-2.0](LICENSE-APACHE) — the Rust
-ecosystem convention. Both are permissive (no copyleft); Apache-2.0 adds an
-explicit patent grant, which suits a package shipping compiled binaries.
-The vendored uap-core data is MIT-licensed upstream.
+Dual-licensed [MIT](LICENSE-MIT) OR [Apache-2.0](LICENSE-APACHE), matching
+uap-rust.
