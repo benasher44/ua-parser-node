@@ -65,4 +65,5 @@ for (const d of readdirSync(join(root, 'npm'))) {
   writeFileSync(p, JSON.stringify(sp, null, 2) + '\n');
 }
 
-console.log(`NEW_VERSION=${target} (upstream ${upstream}, dep ${curDep} -> ${upstream})`);
+console.error(`info: upstream ${upstream}, dep ${curDep} -> ${upstream}`);
+console.log(`NEW_VERSION=${target}`);
