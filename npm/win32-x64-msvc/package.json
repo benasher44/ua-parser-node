@@ -1,6 +1,6 @@
 {
   "name": "ua-parser-node-win32-x64-msvc",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "win32-x64 prebuilt binary for ua-parser-node",
   "os": [
     "win32"

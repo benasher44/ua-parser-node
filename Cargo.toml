@@ -1,6 +1,6 @@
 [package]
 name = "ua-parser-node"
-version = "0.0.1-alpha.0"
+version = "0.0.1-alpha.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "Node bindings for the ua-parser (uap-rust) user-agent parser"
@@ -13,13 +13,13 @@ napi-build = "2"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = { version = "3", default-features = false, features = ["napi8"] }
+napi = { version = "0.0.1-alpha.1", default-features = false, features = ["napi8"] }
 napi-derive = "3"
 ua-parser = "0.2"
-serde = { version = "1", features = ["derive"] }
+serde = { version = "0.0.1-alpha.1", features = ["derive"] }
 serde_json = "1"
-mimalloc = { version = "0.1", default-features = false, optional = true }
-jemallocator = { version = "0.5", default-features = false, optional = true }
+mimalloc = { version = "0.0.1-alpha.1", default-features = false, optional = true }
+jemallocator = { version = "0.0.1-alpha.1", default-features = false, optional = true }
 
 [features]
 default = []
