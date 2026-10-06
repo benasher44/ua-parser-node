@@ -1249,31 +1249,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ua-parser-node-darwin-arm64@npm:0.2.2-alpha.1, ua-parser-node-darwin-arm64@workspace:npm/darwin-arm64":
+"ua-parser-node-darwin-arm64@npm:0.2.2, ua-parser-node-darwin-arm64@workspace:npm/darwin-arm64":
   version: 0.0.0-use.local
   resolution: "ua-parser-node-darwin-arm64@workspace:npm/darwin-arm64"
   languageName: unknown
   linkType: soft
 
-"ua-parser-node-linux-arm64-gnu@npm:0.2.2-alpha.1, ua-parser-node-linux-arm64-gnu@workspace:npm/linux-arm64-gnu":
+"ua-parser-node-linux-arm64-gnu@npm:0.2.2, ua-parser-node-linux-arm64-gnu@workspace:npm/linux-arm64-gnu":
   version: 0.0.0-use.local
   resolution: "ua-parser-node-linux-arm64-gnu@workspace:npm/linux-arm64-gnu"
   languageName: unknown
   linkType: soft
 
-"ua-parser-node-linux-arm64-musl@npm:0.2.2-alpha.1, ua-parser-node-linux-arm64-musl@workspace:npm/linux-arm64-musl":
+"ua-parser-node-linux-arm64-musl@npm:0.2.2, ua-parser-node-linux-arm64-musl@workspace:npm/linux-arm64-musl":
   version: 0.0.0-use.local
   resolution: "ua-parser-node-linux-arm64-musl@workspace:npm/linux-arm64-musl"
   languageName: unknown
   linkType: soft
 
-"ua-parser-node-linux-x64-gnu@npm:0.2.2-alpha.1, ua-parser-node-linux-x64-gnu@workspace:npm/linux-x64-gnu":
+"ua-parser-node-linux-x64-gnu@npm:0.2.2, ua-parser-node-linux-x64-gnu@workspace:npm/linux-x64-gnu":
   version: 0.0.0-use.local
   resolution: "ua-parser-node-linux-x64-gnu@workspace:npm/linux-x64-gnu"
   languageName: unknown
   linkType: soft
 
-"ua-parser-node-win32-x64-msvc@npm:0.2.2-alpha.1, ua-parser-node-win32-x64-msvc@workspace:npm/win32-x64-msvc":
+"ua-parser-node-win32-x64-msvc@npm:0.2.2, ua-parser-node-win32-x64-msvc@workspace:npm/win32-x64-msvc":
   version: 0.0.0-use.local
   resolution: "ua-parser-node-win32-x64-msvc@workspace:npm/win32-x64-msvc"
   languageName: unknown
@@ -1284,11 +1284,11 @@ __metadata:
   resolution: "ua-parser-node@workspace:."
   dependencies:
     "@napi-rs/cli": "npm:^3"
-    ua-parser-node-darwin-arm64: "npm:0.2.2-alpha.1"
-    ua-parser-node-linux-arm64-gnu: "npm:0.2.2-alpha.1"
-    ua-parser-node-linux-arm64-musl: "npm:0.2.2-alpha.1"
-    ua-parser-node-linux-x64-gnu: "npm:0.2.2-alpha.1"
-    ua-parser-node-win32-x64-msvc: "npm:0.2.2-alpha.1"
+    ua-parser-node-darwin-arm64: "npm:0.2.2"
+    ua-parser-node-linux-arm64-gnu: "npm:0.2.2"
+    ua-parser-node-linux-arm64-musl: "npm:0.2.2"
+    ua-parser-node-linux-x64-gnu: "npm:0.2.2"
+    ua-parser-node-win32-x64-msvc: "npm:0.2.2"
   dependenciesMeta:
     ua-parser-node-darwin-arm64:
       optional: true
