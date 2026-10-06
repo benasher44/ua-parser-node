@@ -3,3 +3,6 @@ target/
 *.node
 index.js.bak
 .yarn/
+
+npm/*/index.js
+npm/*/index.d.ts

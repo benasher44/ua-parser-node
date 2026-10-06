@@ -62,7 +62,7 @@ jobs:
       - name: Build (native)
         run: |
           yarn install
-          yarn napi build --platform --release --format esm --target ${{ matrix.settings.target }} ${{ matrix.settings.extra }} --output-dir npm/${{ matrix.settings.pkg }}
+          yarn napi build --platform --release --format esm --no-js --target ${{ matrix.settings.target }} ${{ matrix.settings.extra }} --output-dir npm/${{ matrix.settings.pkg }}
       # tests run against the just-built binary: copy it to the repo root so the
       # committed loader's local fallback finds it (per-platform, in place).
       # The musl slice is aarch64 cross-compiled on an x64 host — untestable here.
@@ -126,8 +126,10 @@ jobs:
       # level): merge lands at ./<platform>/ — stage them into the npm dirs
       - name: Stage binaries into npm dirs
         run: |
-          for d in darwin-arm64 linux-x64-gnu linux-arm64-gnu linux-arm64-musl win32-x64-msvc; do
-            cp "$d/ua-parser-node.$d.node" "npm/$d/ua-parser-node.$d.node"
+          for d in npm/*/; do
+            pkg=${d#npm/}; pkg=${pkg%/}
+            test -f "$pkg/ua-parser-node.$pkg.node" || { echo "missing artifact for $pkg"; exit 1; }
+            cp "$pkg/ua-parser-node.$pkg.node" "$d/ua-parser-node.$pkg.node"
           done
       - name: Detect prerelease (alpha tag only for prerelease versions)
         run: |
