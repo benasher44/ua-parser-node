@@ -1,11 +1,13 @@
 // Sync ua-parser-node's version + dependency with the upstream ua-parser
 // (uap-rust) crate, so a new upstream release triggers an automatic publish.
 //
-//   node scripts/sync-upstream.mjs --mode alpha|final
+//   node scripts/sync-upstream.mjs --mode auto|alpha|final
 //
 // - fetches the latest ua-parser version from crates.io
 // - target version mirrors upstream; alpha mode appends -alpha.<N> (the
-//   validation round), final mode is the upstream version exactly
+//   validation round), final mode is the upstream version exactly, auto is
+//   the two-phase eyeball flow: behind upstream -> alpha, already on an
+//   alpha of the current upstream -> promote to final
 // - bumps Cargo.toml (version + exact dep pin), package.json + the five
 //   platform stubs (version + optionalDependencies)
 // - prints NEW_VERSION=<v> when a bump happened, NOTHING_TO_DO otherwise
@@ -15,8 +17,8 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
-const mode = argv.includes('--mode') ? argv[argv.indexOf('--mode') + 1] : 'alpha';
-if (!['alpha', 'final'].includes(mode)) throw new Error('--mode must be alpha or final');
+const mode = argv.includes('--mode') ? argv[argv.indexOf('--mode') + 1] : 'auto';
+if (!['auto', 'alpha', 'final'].includes(mode)) throw new Error('--mode must be auto, alpha or final');
 
 const res = await fetch('https://crates.io/api/v1/crates/ua-parser', {
   headers: { 'user-agent': 'ua-parser-node-sync (ben@benasher.co)' },
@@ -33,7 +35,20 @@ if (!curVersion || !curDep) throw new Error('could not read Cargo.toml version/d
 
 const base = upstream.split('-')[0];
 const curAlpha = curVersion.match(new RegExp(`^${base.replace(/\./g, '\\.')}-alpha\\.(\\d+)$`))?.[1];
-const target = mode === 'alpha' ? `${base}-alpha.${curAlpha ? Number(curAlpha) + 1 : 1}` : upstream;
+let target;
+if (mode === 'final') {
+  target = upstream;
+} else if (mode === 'alpha') {
+  target = `${base}-alpha.${curAlpha ? Number(curAlpha) + 1 : 1}`;
+} else {
+  // auto (eyeball flow): already on the final of the current upstream -> done;
+  // on an alpha of it -> promote to final; otherwise start an alpha round
+  if (curVersion === upstream) {
+    console.log('NOTHING_TO_DO');
+    process.exit(0);
+  }
+  target = curAlpha ? upstream : `${base}-alpha.1`;
+}
 
 if (target === curVersion) {
   console.log('NOTHING_TO_DO');
