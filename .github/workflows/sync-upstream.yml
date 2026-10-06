@@ -1,18 +1,17 @@
 name: Sync upstream
 
 # When ua-parser (uap-rust) releases a new version, bump ua-parser-node to
-# mirror it and push a v* tag — the existing publish workflow builds, tests
-# and publishes automatically. Alpha mode publishes a prerelease round;
-# final mode publishes the stable (which also moves the npm `latest` tag).
+# mirror it and publish the FINAL stable directly (moves the npm `latest`
+# tag). Alpha mode remains for manual pre-check rounds before a release.
 on:
   schedule:
     - cron: '0 6 * * *'   # daily 06:00 UTC
   workflow_dispatch:
     inputs:
       mode:
-        description: 'alpha (prerelease round) or final (stable)'
+        description: 'final (stable, default) or alpha (pre-check round)'
         type: choice
-        default: alpha
+        default: final
         options:
           - alpha
           - final
@@ -37,7 +36,7 @@ jobs:
       - name: Sync versions with upstream
         id: sync
         run: |
-          OUT=$(node scripts/sync-upstream.mjs --mode ${{ inputs.mode || 'alpha' }})
+          OUT=$(node scripts/sync-upstream.mjs --mode ${{ inputs.mode || 'final' }})
           echo "$OUT"
           if [[ "$OUT" == NEW_VERSION=* ]]; then
             echo "version=${OUT#NEW_VERSION=}" >> "$GITHUB_OUTPUT"
